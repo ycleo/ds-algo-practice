@@ -1,4 +1,7 @@
 const lengthOfLongestSubstring = function(s) {
+    if (s.length <= 1)
+        return s.length;
+        
     let longest = 0;
     
     for (let i = 0; i< s.length; i++) {
