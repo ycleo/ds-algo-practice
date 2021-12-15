@@ -7,7 +7,7 @@ const subIsPalindrome = function(s, p1, p2) {
     return true;
 }
 
-var validPalindrome = function(s) {
+const validPalindrome = function(s) {
     if (s.length <= 1) return true;
     
     //s = s.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
