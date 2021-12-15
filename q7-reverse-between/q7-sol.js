@@ -1,30 +1,36 @@
 const reverseBetween = function(head, m, n) {
-    let currentPos = 1, currentNode = head;
-    let start = head;
-    
-    while(currentPos < m) {
-      start = currentNode;
-      currentNode = currentNode.next;
-      currentPos++;
+    let position = 1;
+    let start = cur = head;
+
+    while (position < m) {
+        start = cur;
+        cur = cur.next;
+        position++;
     }
+
+    let reverList = null;
+    let tail = cur; // store the tail of the reverse linked list
     
-    let newList = null, tail = currentNode;
-    
-    while(currentPos >= m && currentPos <= n) {
-      const next = currentNode.next;
-      currentNode.next = newList;
-      newList = currentNode;
-      currentNode = next;
-      currentPos++;
+    while (position <= n) {
+        // store the next value
+        let nxt = cur.next;   
+
+        // add node to the reverList
+        cur.next = reverList; 
+        reverList = cur;
+
+        cur = nxt;
+        position++;
     }
-    
-    start.next = newList;
-    tail.next = currentNode;
-    
-    if(m > 1) {
-      return head
+
+    start.next = reverList;
+    tail.next = cur;
+
+    if (m > 1) {  
+        return head;
     } else {
-      return newList;
+        return reverList;
     }
-  };
+
+}   
   
