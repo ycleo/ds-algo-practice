@@ -13,11 +13,12 @@ const lengthOfLongestSubstring = function(s) {
     
     while (j < s.length) {
         const char = s[j];
-        const seenCharPreIndex = seenChars[char];
+        const seenCharPrevIndex = seenChars[char];
         
-        // the char has repeated and is within the current string
-        if (seenCharPreIndex >= i) 
-            i = seenCharPreIndex + 1;
+        // when the char has repeated and is within the current string
+        if (seenCharPrevIndex >= i) 
+            // update the postition of i
+            i = seenCharPrevIndex + 1;
         
         seenChars[char] = j;
         longest = Math.max(longest, j - i + 1);
