@@ -18,9 +18,9 @@
 
 const minRemoveToMakeValid = function(s) {
     const stack = [];
-    const arr = s.split('');
+    const arr = s.split('');  // O(n)
     
-    for (let i = 0; i < s.length; i++) {
+    for (let i = 0; i < s.length; i++) { // O(n)
         
         if (s[i] === '(') stack.push(i);
         
@@ -30,8 +30,11 @@ const minRemoveToMakeValid = function(s) {
         }
     }
 
-    while (stack.length){
+    while (stack.length){  // O(n)
         arr[stack.pop()] = '';
     }
-    return arr.join('');
+    return arr.join(''); // O(n)
 }
+
+// space: stack and arr => O(2n) => O(n)
+// time: O(4n) => O(n)
