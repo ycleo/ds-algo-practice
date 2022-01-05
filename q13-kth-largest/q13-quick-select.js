@@ -24,25 +24,6 @@
 //             i
 
 
-// Algorithm:
-// qs (nums, 0, nums.len - 1)
-
-// qs (arr, left, right):
-//      if (left < right) 
-//          p = partition(arr, left, right)
-//          qs (arr, left, p-1)
-//          qs (arr, p+1, right)
-
-// partition (arr, left, right):
-//      p = i = left
-//      for i from left to right
-//          if (arr[i] < arr[right])
-//              swap arr[j] and arr[j]
-//              p++
-//
-//      swap arr[p] and arr[right]
-//      return p
-
 const swap = function(arr, i, j) {
     let temp = arr[i];
     arr[i] = arr[j];
@@ -64,19 +45,25 @@ const partition = function(arr, left, right) {
     return partitionIdx;
 };
 
-const quickSort = function(arr, left, right) {
+const quickSelect = function(arr, left, right, idxToFind) {
     if (left < right) {
         let partitionIdx = partition(arr, left, right);
         
-        quickSort(arr, left, partitionIdx - 1);
-        quickSort(arr, partitionIdx + 1, right);
+        if (idxToFind === partitionIdx)
+            return;
+        else if (idxToFind < partitionIdx)
+            return quickSelect(arr, left, partitionIdx - 1, idxToFind);
+        else
+            return quickSelect(arr, partitionIdx + 1, right, idxToFind);
     }
 };
 
 const findKthLargest = function(nums, k) {
-    quickSort(nums, 0, nums.length - 1);
-    return nums[nums.length - k];
+    let idxToFind = nums.length - k;
+    quickSelect(nums, 0, nums.length - 1, idxToFind);
+    return nums[idxToFind];
 };
 
-// time: O(nlogn); worst: O(n^2)
-// space: O(logn)
+
+// time: O(n); worst: O(n^2)
+// space: O(1) tail recursion
