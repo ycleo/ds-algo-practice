@@ -2,6 +2,7 @@
 // https://leetcode.com/problems/two-sum/
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -11,26 +12,28 @@ public:
     vector<int> twoSum(vector<int> &nums, int target)
     {
         vector<int> ans;
-        int com;
+        unordered_map<int, int> mapping;
+        // store {vlue: position}
 
         for (int i = 0; i < nums.size(); i++)
         {
-            com = target - nums[i];
-            for (int j = i + 1; j < nums.size(); j++)
+            int corValue = target - nums[i];
+
+            // if the correndence value exists in the map
+            if (mapping.count(corValue))
             {
-                if (com == nums[j])
-                {
-                    ans.push_back(i);
-                    ans.push_back(j);
-                }
+                ans.push_back(mapping[corValue]);
+                ans.push_back(i);
+                break;
             }
+            mapping[nums[i]] = i;
         }
         return ans;
     }
 };
 
-// time: O(n^2)
-// space: O(1)
+// time: O(n)
+// space: O(n)
 
 int main()
 {
