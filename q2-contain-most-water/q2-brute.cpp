@@ -21,7 +21,7 @@ public:
         {
             for (int j = i + 1; j < height.size(); j++)
             {
-                area = std::max(area, std::min(height[i], height[j]) * (j - i));
+                area = max(area, min(height[i], height[j]) * (j - i));
             }
         }
 
