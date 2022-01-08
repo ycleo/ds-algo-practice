@@ -13,7 +13,7 @@ public:
     {
         vector<int> ans;
         unordered_map<int, int> mapping;
-        // store {vlue: position}
+        // store {value: position}
 
         for (int i = 0; i < nums.size(); i++)
         {
