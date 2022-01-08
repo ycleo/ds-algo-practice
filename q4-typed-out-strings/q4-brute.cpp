@@ -1,5 +1,8 @@
 // LeetCode 844.
 // https://leetcode.com/problems/backspace-string-compare/
+// Test Cases:
+// 1. s = "", t = "a#"  -> true
+// 2. s = "ab###c#d", t = "a#d"  -> true
 
 #include <iostream>
 #include <string>
@@ -21,9 +24,7 @@ public:
                     ans.pop_back();
             }
             else
-            {
                 ans.push_back(c);
-            }
         }
 
         return ans;
