@@ -1,3 +1,7 @@
+// LeetCode 844.
+// https://leetcode.com/problems/backspace-string-compare/
+
+
 const buildStr = function (str) {
     const builtArr = [];
 

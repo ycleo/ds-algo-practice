@@ -1,3 +1,6 @@
+// LeetCode 844.
+// https://leetcode.com/problems/backspace-string-compare/
+
 const backspaceCompare = function (s, t) {
     let p1 = s.length - 1, p2 = t.length - 1;
 
