@@ -12,26 +12,22 @@ using namespace std;
 class Solution
 {
 public:
-    string backspace(string s)
-    {
+    string backspace(string s) {
         string ans = "";
 
-        for (char c : s)
-        {
-            if (c == '#')
-            {
+        for (char c : s) {
+            if (c == '#') {
                 if (!ans.empty())
                     ans.pop_back();
-            }
-            else
+            } else {
                 ans.push_back(c);
+            }
         }
 
         return ans;
     }
 
-    bool backspaceCompare(string s, string t)
-    {
+    bool backspaceCompare(string s, string t) {
         return backspace(s) == backspace(t);
     }
 };
