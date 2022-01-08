@@ -1,3 +1,6 @@
+// LeetCode 680.
+// https://leetcode.com/problems/valid-palindrome-ii/
+
 const subIsPalindrome = function(s, p1, p2) {
     while (p1 < p2) {
         if (s[p1] !== s[p2]) return false;
