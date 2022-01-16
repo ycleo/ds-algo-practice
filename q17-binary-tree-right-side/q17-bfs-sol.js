@@ -1,3 +1,6 @@
+// LeetCode 199.
+// https://leetcode.com/problems/binary-tree-right-side-view/
+
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -45,3 +48,4 @@ const rightSideView = function(root) {
 
 // time: O(n)
 // space: O(n)
+// if it is a skew tree => BFS is better
