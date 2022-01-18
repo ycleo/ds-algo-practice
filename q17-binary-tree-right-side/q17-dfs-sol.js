@@ -86,4 +86,4 @@ const rightSideView = function(root) {
 
 // time: O(n)
 // space: O(n)
-// if it is a full binary tree => better
+// if it is a complete binary tree => better
