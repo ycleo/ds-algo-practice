@@ -1,5 +1,5 @@
 
-// size; isEmpty; peek; push; pop
+// size O(1); isEmpty O(1); peek O(1); push O(logN); pop O(logN)
 
 class PriorityQueue {
     constructor(comparator = (a, b) => a > b) {
@@ -40,12 +40,6 @@ class PriorityQueue {
         [this._heap[i], this._heap[j]] = [this._heap[j], this._heap[i]];
     }
 
-    push(val) {
-        this._heap.push(val);
-        this._compareUp();
-        return this.size();
-    }
-
     _compareUp() {
         let nodeIdx = this.size() - 1;
 
@@ -55,14 +49,6 @@ class PriorityQueue {
         }
     }
 
-    pop() {
-        if(this.size() > 1)
-            this._swap(0, this.size() - 1);
-
-        const popNode = this._heap.pop();
-        this._compareDown();
-        return popNode;
-    }
     _compareDown() {
         let nodeIdx = 0;
         while (
@@ -81,6 +67,24 @@ class PriorityQueue {
                 nodeIdx = greaterChild;
         }
     }
+
+    push(val) {
+        this._heap.push(val);
+        this._compareUp();
+        return this.size();
+    }
+
+    
+
+    pop() {
+        if(this.size() > 1)
+            this._swap(0, this.size() - 1);
+
+        const popNode = this._heap.pop();
+        this._compareDown();
+        return popNode;
+    }
+    
 }
 
 const pq = new PriorityQueue();
