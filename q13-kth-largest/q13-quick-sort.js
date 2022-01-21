@@ -37,7 +37,7 @@
 //      p = i = left
 //      for i from left to right
 //          if (arr[i] < arr[right])
-//              swap arr[j] and arr[j]
+//              swap arr[i] and arr[p]
 //              p++
 //
 //      swap arr[p] and arr[right]

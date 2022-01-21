@@ -64,6 +64,15 @@ const findKthLargest = function(nums, k) {
     return nums[idxToFind];
 };
 
+// O(N + N/2 + N/4 + N/8 + ...) = O(2N)
+// time: O(N); 
 
-// time: O(n); worst: O(n^2)
+// worst: O(N^2)
+// The worst case is O(N^2) 
+// because if the partition element we choose each time 
+// ends up being the very last element index, then 
+// we actually only reduce our search space by 1 element, 
+// which means we get O(N + N - 1 + N - 2 + N - 3 + N - 4....) 
+// which is O(N^2)!
+
 // space: O(1) tail recursion
