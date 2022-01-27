@@ -15,18 +15,22 @@ const adjacencyMatrix = [
 //     |
 //     4 - 6 - 7
 
-const bfs = function (matrix) {
-    
-    const ans = [];
-    const seen = new Set(); 
+const bfs = function (matrix, start) {
 
+    const ans = [];
+
+    // record the node that has been traversed or seen
+    const seen = new Set(); 
     // the first row represents the adjacent nodes around the node 0
-    const queue = [0];
+    const queue = [start];
 
     while (queue.length) {
+        // remove the leftmost node that stay the longest in the queue
         const currNode = queue.shift();
         seen.add(currNode);
         ans.push(currNode);
+
+        // get the number of nodes that surround the current processing node
         const surrNodeNum = matrix[currNode].length;
 
         for (let i = 0; i < surrNodeNum; i++) {
@@ -35,13 +39,10 @@ const bfs = function (matrix) {
             }
         }
     }
-
-    for (let j = 0; j < ans.length; j++) {
-        console.log(ans[j]);
-    }
+    return ans;
 };
 
-bfs(adjacencyMatrix);
+console.log(bfs(adjacencyMatrix, 3));
 
 // time: O(N)
 // space: O(N)
