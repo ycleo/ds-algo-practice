@@ -30,3 +30,6 @@ const dfs = function (matrix, node, seen, sequence) {
 const sequence = [];
 dfs(adjacencyMatrix, 7, new Set(), sequence);
 console.log(sequence);
+
+// time: O(N)
+// space: O(N)
