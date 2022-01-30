@@ -78,3 +78,49 @@ var canFinish = function(numCourses, prerequisites) {
 
 // E: length of prerequisites
 // V: number of courses
+
+
+//  recursive method:
+const hasCycleDFS = function(node, start, adjList, seen) {
+    if (node === start) return true;
+    if (!seen.has(node)) {
+        seen.add(node);
+        for (let surr of adjList[node]) {
+            if (hasCycleDFS(surr, start, adjList, seen))
+                return true;
+        } 
+    }
+    return false;
+}
+
+const hasCycle = function (start, adjList) {
+     const seen = new Set();
+    // DFS to check the surrounding nodes 
+    const surrounding = adjList[start];
+    for (let node of surrounding) {
+        if (hasCycleDFS(node, start, adjList, seen))
+            return true;
+    }
+    
+    return false;
+}
+
+var canFinish = function(numCourses, prerequisites) {
+    if (numCourses < 2 || prerequisites.length < 2) return true;
+    
+    // create adjancency list
+    const adjList = new Array(numCourses).fill(0).map(() => []);
+    for (let [wanted, prereq] of prerequisites) 
+        adjList[prereq].push(wanted);
+
+    
+    // check if there has a cycle start from every nodes
+    for (let start = 0; start < numCourses; start++) {
+        // if there is a cycle detected during DFS -> courses can not be finished
+        if (hasCycle(start, adjList)) 
+            return false;
+    }
+    
+    // no cycle detected -> able to finish all courses
+    return true;
+};
