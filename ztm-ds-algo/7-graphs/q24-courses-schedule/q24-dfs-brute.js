@@ -122,7 +122,7 @@ var canFinish = function(numCourses, prerequisites) {
     
 };
 
-// time: O(E + V)
+// time: O(E + V^2)
 // space: O(V^2)
 
 // E: length of prerequisites

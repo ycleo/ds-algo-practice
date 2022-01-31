@@ -57,7 +57,7 @@ var canFinish = function(numCourses, prerequisites) {
         
         // get the adjacent nodes of the current node
         const children = adjList[curr];
-        for (let i = 0; i < children.length; i++) {  // O(V)
+        for (let i = 0; i < children.length; i++) {  // O(E)
             
             // the current node has been removed from the graph
             // so the indegree of its adjacent node will -1
@@ -74,6 +74,9 @@ var canFinish = function(numCourses, prerequisites) {
 };
 
 // time: O(E + V)
+// The outer while loop will be executed V number of times 
+// and the inner for loop will be executed E number of times.
+
 // space: O(V^2)
 
 // E: length of prerequisites
