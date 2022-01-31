@@ -18,49 +18,59 @@
 //            0    4 -> 1 <- 3  
 //                  \-> 2 ->/ 
 
-// prerequisites -> edges
+// courses -> vertex (V)
+// prerequisites -> edges (E)
 // false conditions -> cyclic 
 // brute solution: DFS or BFS start from every nodes
 // optimal solution: topological sort
 
 var canFinish = function(numCourses, prerequisites) {
+    // edge cases
+    if (numCourses < 2 || prerequisites.length < 2) return true;
     
-    // create edges map and record the indegree of each node
-    const map = new Map();
+    // create adjacency list and record indegree for each node
+    const adjList = new Array(numCourses).fill(0).map(() => []);  
     const inDeg = new Array(numCourses).fill(0);
-    
-    for (let [wanted, prereq] of prerequisites) {
-        // record edge relation => worst case space = O(V^2)
-        if (map.has(prereq)) map.get(prereq).push(wanted);
-        else map.set(prereq, [wanted]);        
+    for (let i = 0; i < prerequisites.length; i++) {  // O(E)
+        const edge = prerequisites[i];
+        const wanted = edge[0], prereq = edge[1];
         
-        // record indegree
+        adjList[prereq].push(wanted);
         inDeg[wanted]++;
     }
     
+    // create a stack to collect the node whose indegree = 0
     const stack = [];
-    let seenCount = 0;
+    // when indegree become 0 => we can remove it from the graph
+    // record the removing node number
+    let removeCount = 0;
     
+    // collect the nodes whose original indegree = 0
     for (let i = 0; i < numCourses; i++) {
-        // push the nodes whose indegree is 0 into the stack
-        if (inDeg[i] === 0) 
-            stack.push(i);
+        if (inDeg[i] === 0) stack.push(i);
     }
     
-    while (stack.length) {  // O(V)
-        const curr = stack.pop();
-        seenCount++;
-        const nexts = map.get(curr)  // worst case of nexts.length = O(V)
+    while(stack.length) {  // O(V)
         
-        if (nexts) {
-            for (let next of nexts) {
-                inDeg[next]--;
-                if (inDeg[next] === 0) stack.push(next);
-            }
+        const curr = stack.pop();
+        removeCount++;
+        
+        // get the adjacent nodes of the current node
+        const children = adjList[curr];
+        for (let i = 0; i < children.length; i++) {  // O(V)
+            
+            // the current node has been removed from the graph
+            // so the indegree of its adjacent node will -1
+            const child = children[i];
+            inDeg[child]--;
+            
+            // collect the adjacent nodes whose indegree = 0
+            if (inDeg[child] === 0) stack.push(child);
         }
     }
     
-    return seenCount === numCourses;
+    // if we could remove all nodes, we can finish all courses
+    return removeCount === numCourses;
 };
 
 // time: O(E + V^2)
