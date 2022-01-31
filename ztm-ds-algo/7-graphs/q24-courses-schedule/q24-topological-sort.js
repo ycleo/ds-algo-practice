@@ -73,7 +73,7 @@ var canFinish = function(numCourses, prerequisites) {
     return removeCount === numCourses;
 };
 
-// time: O(E + V^2)
+// time: O(E + V)
 // space: O(V^2)
 
 // E: length of prerequisites
