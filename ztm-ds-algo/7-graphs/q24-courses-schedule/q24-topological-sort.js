@@ -77,7 +77,7 @@ var canFinish = function(numCourses, prerequisites) {
 // The outer while loop will be executed V number of times 
 // and the inner for loop will be executed E number of times.
 
-// space: O(V^2) => also could use edge map instead of adjacent lis
+// space: O(V^2) => also could use edge map instead of adjacency list
 //               => can decrease to O(E or V)
 
 // E: length of prerequisites
