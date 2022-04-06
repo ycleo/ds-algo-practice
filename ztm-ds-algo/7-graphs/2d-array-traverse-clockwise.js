@@ -20,7 +20,7 @@ const print2DArray = function (arr) {
     let count = row * col;
     
     let i = 0, j = 0; // current position
-    let dir = right, // current direction
+    let dir = right; // current direction
     let step = col;  // how many steps left for this direction
     
     while (count > 0) {
