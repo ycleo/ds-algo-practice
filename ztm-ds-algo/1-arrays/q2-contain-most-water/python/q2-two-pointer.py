@@ -1,4 +1,4 @@
-# 1. Verify
+# 1. Verify the constraints
     # Could height be zero? => yes
     # What is the min number of the lines? => 2
     
@@ -33,6 +33,7 @@ class Solution:
         return area
     
 # 5. Check typo
+
 # 6. Run test cases
     # [0, 0]: 
         # a = 0, b = 0, area = 1 * 0 = 0 (pass)
