@@ -11,18 +11,17 @@
     # process each string and then compare
 
 # 4. Coding 
-def process(str):
-    ans = []
-    for letter in str:
-        if letter != '#':
-            ans.append(letter) 
-        else:
-            if len(ans) > 0:
-                ans.pop(-1)
-    return ''.join(ans)
-
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
+        def process(str):
+            ans = []
+            for letter in str:
+                if letter != '#':
+                    ans.append(letter) 
+                elif ans:
+                    ans.pop(-1)
+            return ''.join(ans)
+
         return process(s) == process(t)
 
 # 5. check typo
