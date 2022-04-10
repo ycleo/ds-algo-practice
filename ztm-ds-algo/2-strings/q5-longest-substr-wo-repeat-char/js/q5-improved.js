@@ -10,7 +10,8 @@ const lengthOfLongestSubstring = function(s) {
     // 1. hash {char: index}
     
     // 2. when j run into the repeat char 
-    //    -> check if hash[s[j]] >= i -> i move to i = hash[s[j]] + 1 
+    //    -> check if hash[s[j]] >= i 
+    //    -> i move to i = hash[s[j]] + 1 
     
     // 3. update hash[s[j]] = j
     
