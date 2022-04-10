@@ -1,3 +1,6 @@
+# LeetCode 3.
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
 # 1. verify constraints
     # Could s be an empty string? yes, output would be 0
 
@@ -15,7 +18,7 @@
     # (improved) 
     # set longest length = 0, two pointers i = j = 0, hasMap = { char: index }
     # j pointer goes through the s 
-        # if (char has repeated) and (is now between i and j)
+        # if char (has repeated) and (is now between i and j)
             # i moves to the hash[char] + 1
         # update hash[char] = j
         # j++
