@@ -1,25 +1,17 @@
+# LeetCode 20
+# https://leetcode.com/problems/valid-parentheses/
+
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
+        charMap = {'(': ')', '{': '}', '[': ']'}
         for char in s:
-            if char == '(' or char == '{' or char == '[':
+            if char in charMap:
                 stack.append(char)
-            elif char == ')':
-                if len(stack) == 0 or stack[-1] != '(':
+            else:
+                if len(stack) == 0 or char != charMap[stack.pop()]:
                     return False
-                else:
-                    stack.pop()
-                
-            elif char == '}':
-                if len(stack) == 0 or stack[-1] != '{':
-                    return False
-                else:
-                    stack.pop()
-                    
-            elif char == ']':
-                if len(stack) == 0 or stack[-1] != '[':
-                    return False
-                else:
-                    stack.pop()
-        
         return len(stack) == 0
+
+# time: O(n)
+# space: O(n)
