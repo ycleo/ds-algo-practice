@@ -25,7 +25,7 @@ def reverseLinkedList(head, position, right):
 # start    header         tail     end
 
 class Solution:
-    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+    def reverseBetween(self, head, left: int, right: int):
         
         position = 1
         start = curr = head
