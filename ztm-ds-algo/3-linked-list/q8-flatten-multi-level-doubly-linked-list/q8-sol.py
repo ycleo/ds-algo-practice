@@ -42,15 +42,11 @@ class Node:
 """
 
 class Solution:
-    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        if head is None:
-            return head
-        
+    def flatten(self, head):
         curr = head
         while curr is not None:
-            if curr.child is None:
-                curr = curr.next
-            else:
+  
+            if curr.child is not None: # Flatten
                 currNext = curr.next
                 temp = curr.child
                 while temp.next is not None:
@@ -63,7 +59,8 @@ class Solution:
                 curr.next = curr.child
                 curr.next.prev = curr
                 curr.child = None
-                curr = curr.next
+
+            curr = curr.next
         return head
     
 # time: O(n)
