@@ -30,7 +30,7 @@ const swap = function(arr, i, j) {
     arr[j] = temp;
 };
 
-const partition = function(arr, left, right) {
+const partition = function(arr, left, right) {  // O(n)
     let piv = arr[right];
     let partitionIdx = left;
 
