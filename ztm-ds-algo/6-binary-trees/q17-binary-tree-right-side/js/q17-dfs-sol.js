@@ -43,7 +43,7 @@
 //                  currNode.right = null
 //                  maxLevel = currLevel
 //              }
-//              else if (currNode.left){
+//              else if (currNode.left) {
 //                  stack.push(currNode.left)
 //                  ans.push(currNode.left.val) 
 //                  currNode.left = null
