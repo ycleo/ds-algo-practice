@@ -24,26 +24,28 @@
 // brute solution: DFS start from every nodes
 
 //  1. recursive method:
-const hasCycleDFS = function(start, adjList, processed, processing) {
+function hasCycleDFS(start, adjList, processed, processing) {
     // this starting node has been processed before -> means already processed all nodes
     // -> means no cycle detected
-    if (processed[start]) return false;
-    
+    if (processed[start])
+        return false;
+
     // if meet the starting node again in "this round" => cycle detected!!!!!
-    if (processing[start]) return true;
-    
+    if (processing[start])
+        return true;
+
     processing[start] = true; // in "this round" -> mark the starting node has been traversed 
-    const adjs = adjList[start]; 
+    const adjs = adjList[start];
     for (let i = 0; i < adjs.length; i++) {
         // when the adjacent node detect a cycle
         // -> directly return the result
         if (hasCycleDFS(adjs[i], adjList, processed, processing))
             return true;
     }
-     // "this round" is finished
+    // "this round" is finished
     processing[start] = false; // provide the correct status for the next round
-    
-    processed[start] = true;  // starting node of this round has been processed
+
+    processed[start] = true; // starting node of this round has been processed
     return false; //this round did not detect cycle
 }
 
