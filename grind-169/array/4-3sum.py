@@ -1,14 +1,26 @@
 # https://leetcode.com/problems/3sum/submissions/
-# looping + two pointers !!!
+# sorting + looping + two pointers !!!
 
-# sort the nums
-# loop through the nums
-# for each iteration:
-# if num > 0 -> impossible to form 3 sum (sorted in ascending order) -> end the algo
-# if num == prev_num -> skip (continue)
+# 1. Sort "nums" -> in order to perform two-pointer search and avoid duplicates
 
-# target = -num
-# two pointers technique to find the combination
+# 2. Iterate through "nums", for each element:
+#     - if curr > 0  ->  we cannot form a triplet that sums to zero, so we break out of the loop.
+#     - if the curr == prev  -> then skip it to avoid duplicates.
+#     - otherwise, two-pointer approach to the pairs that sum up to be = -(curr).
+
+# 3. Return res.
+
+# for two-pointer approach part:
+# target = -(curr)
+# l, r = i + 1, len(nums) - 1
+
+# While l < r, do the following:
+#     Calculate the sum of the numbers at indices l and r.
+#     if sum < target -> l++ to increase the next sum
+#     if sum > target -> r-- to decrease the next sum
+#     if sum == target ->  res.append([-target, nums[l], nums[r]])
+#                      ->  l++ to check the next element == prev l or not
+#                      ->  If yes, l++ until it's a new number.
 
 
 class Solution:
@@ -20,11 +32,14 @@ class Solution:
                 break
             if i > 0 and n == nums[i - 1]:
                 continue
-            self.twoSum(nums, -n, i + 1, len(nums) - 1)
+            self.twoSum(nums, i)
 
         return self.res
 
-    def twoSum(self, nums, target, l, r):
+    def twoSum(self, nums, i):
+        target = -nums[i]
+        l, r = i + 1, len(nums) - 1
+
         while l < r:
             temp = nums[l] + nums[r]
             if temp < target:
