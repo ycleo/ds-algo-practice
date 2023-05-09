@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/insert-interval/
+# sorting + consider the "non-overlap" condition first!!!!!
 
 # res = []
 # newStart, newEnd = newInterval
