@@ -22,6 +22,7 @@ class Solution:
         res = []
 
         for i, interval in enumerate(intervals):
+            new_start, new_end = newInterval
             start, end = interval
 
             # consider the "non-overlap" condition first!!!!!
@@ -34,9 +35,7 @@ class Solution:
 
             # overlap condition -> update newInterval
             else:
-                new_start = min(newInterval[0], start)
-                new_end = max(newInterval[1], end)
-                newInterval = [new_start, new_end]
+                newInterval = [min(start, new_start), max(end, new_end)]
 
         res.append(newInterval)
         return res

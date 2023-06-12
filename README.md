@@ -10,6 +10,8 @@
 
 ## LeetCode Questions
 
+### 0. Others
+
 ### 1. Hash Map
 
 ### 2. Two Pointers
@@ -45,6 +47,8 @@
 ### 17. Graph
 
 ### 17-1. Minimum Spanning Tree
+
+### 17-2. Shortest Path
 
 ### 18. Divide and Conquer
 
