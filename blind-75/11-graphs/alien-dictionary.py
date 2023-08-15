@@ -57,3 +57,39 @@ class Solution:
 
 # T: O(total number of chars)
 # S: O(total number of distinct chars)
+
+
+# approach 2: DFS
+class Solution:
+    def alienOrder(self, words: List[str]) -> str:
+        adjList = {c: [] for w in words for c in w}
+        for i in range(len(words) - 1):
+            w1, w2 = words[i], words[i + 1]
+            minLen = min(len(w1), len(w2))
+            if w1[:minLen] == w2[:minLen] and len(w1) > len(w2):
+                return ""
+            for j in range(minLen):
+                if w1[j] != w2[j]:
+                    adjList[w1[j]].append(w2[j])
+                    break
+
+        visit = {}  # node:  "seen" or "processed"
+        res = []
+
+        def dfs(node):  # True iff no cycle
+            if node in visit:
+                # if "seen" -> False -> cycle detected
+                return visit[node] == "processed"
+            visit[node] = "seen"
+            for nei in adjList[node]:
+                if not dfs(nei):   # cycle detected
+                    return False
+            visit[node] = "processed"
+            res.append(node)
+            return True
+
+        for c in adjList.keys():
+            if not dfs(c):   # cycle detected
+                return ""
+
+        return "".join(res[::-1])
